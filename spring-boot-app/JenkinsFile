@@ -33,9 +33,9 @@ pipeline {
             steps {
                 script {
                     docker.image(env.MAVEN_IMAGE).inside(
-                        "--network host " +
-                        "--user=$(id -u jenkins):$(id -g jenkins) " +
-                        "-v /var/run/docker.sock:/var/run/docker.sock"
+                        '--network host ' +
+                        '--user=$(id -u jenkins):$(id -g jenkins) ' +
+                        '-v /var/run/docker.sock:/var/run/docker.sock'
                     ) {
                         sh '''
                             cd spring-boot-app
@@ -51,8 +51,8 @@ pipeline {
                 withCredentials([string(credentialsId: 'sonarqube', variable: 'SONAR_AUTH_TOKEN')]) {
                     script {
                         docker.image(env.MAVEN_IMAGE).inside(
-                            "--network host " +
-                            "--user=$(id -u jenkins):$(id -g jenkins)"
+                            '--network host ' +
+                            '--user=$(id -u jenkins):$(id -g jenkins)'
                         ) {
                             sh '''
                                 cd spring-boot-app
