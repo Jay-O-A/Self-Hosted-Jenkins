@@ -55,7 +55,7 @@ pipeline {
                                 cd spring-boot-app
                                 mvn clean verify \
                                   org.sonarsource.scanner.maven:sonar-maven-plugin:5.5.0.6356:sonar \
-                                  -Dsonar.token=$SONAR_TOKEN \
+                                  -Dsonar.login=$SONAR_AUTH_TOKEN \
                                   -Dsonar.host.url=${SONAR_URL}
                             '''
                         }
